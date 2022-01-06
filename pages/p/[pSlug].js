@@ -695,7 +695,60 @@ const Product = ({ product, author }) => {
 					<div class="pt-6">
 
 						<section class="max-w-6xl mx-auto  text-gray-600 body-font overflow-hidden">
+						<section class="text-gray-600 body-font">
+								<div class="container px-1 mx-auto flex flex-wrap">
+									<div class="flex flex-wrap md:-m-2 -m-1">
+									<main class="py-6 px-4 sm:p-6 md:py-10 md:px-8">
+  <div class="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
+    <div class="relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1">
+      <h1 class="mt-1 text-lg font-semibold text-white sm:text-gray-900 md:text-2xl dark:sm:text-white">{p.fields.name}</h1>
+      <p class="text-sm leading-4 font-medium text-black sm:text-white">{purpose()}</p>
+   
+    </div>
+    <div class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
+      <img onClick={() => openModalThumbnail()} src={p.fields.get_thumbnail_url[0].thumbnails.large.url} alt="" class="w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy"/>
+      <img onClick={() => openModalImg1()} src={p.fields.image1[0].thumbnails.large.url} alt="" class="w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy"/>
 
+
+      <img onClick={() => openModalImg2()} src={p.fields.image2[0].thumbnails.large.url}  alt="" class=" w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy"/>
+      <img onClick={() => openModalImg3()} src={p.fields.image3[0].thumbnails.large.url}  alt="" class=" w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy"/>
+    </div>
+    <dl class="mt-4 text-xs font-medium flex items-center row-start-2 sm:mt-1 sm:row-start-3 md:mt-2.5 lg:row-start-2">
+      <dd class="flex items-center">
+        <svg width="2" height="2" aria-hidden="true" fill="currentColor" class="text-gray-300">
+          <circle cx="1" cy="1" r="1" />
+        </svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-gray-400 dark:text-gray-500" aria-hidden="true">
+          <path d="M18 11.034C18 14.897 12 19 12 19s-6-4.103-6-7.966C6 7.655 8.819 5 12 5s6 2.655 6 6.034Z" />
+          <path d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+        </svg>
+		{p.fields.shortAddress}
+      </dd>
+    </dl>
+	
+    <div class="mt-4 col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4">
+      <button type="button" class="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-lg">Check availability</button>
+    </div>
+    <p class="mt-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-gray-400">
+      This sunny and spacious room is for those traveling light and looking for a comfy and cosy place to lay their head for a night or two. This beach house sits in a vibrant neighborhood littered with cafes, pubs, restaurants and supermarkets and is close to all the major attractions such as Edinburgh Castle and Arthur's Seat.
+	  <p class="text-2xl text-gray-900">{pricings()}</p>
+													<h3 class="mt-2 text-gray-900">
+														Listed on : {p.fields.listed_on}
+													</h3>
+
+													<p class="mt-1 text-gray-900">
+														{author.records.map(a => (<span>Listed by: <a href={a.fields.slugUrl} class="text-indigo-500">{a.fields.name}</a> </span>))}
+													</p>
+													{projectLaunch()}
+
+	</p>
+	
+  </div>
+</main>
+
+									</div>
+								</div>
+							</section>
 							<section class="text-gray-600 body-font">
 								<div class="container px-1 mx-auto flex flex-wrap">
 									<div class="flex flex-wrap md:-m-2 -m-1">
@@ -761,7 +814,7 @@ const Product = ({ product, author }) => {
 						<div class="max-w-2xl mx-auto px-4 py-4 sm:px-2 lg:max-w-7xl lg:pt-16 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
 							<div class="lg:col-span-2 lg:pr-8">
 								<div>
-									<h3 class="sr-only">Description</h3>
+								
 									<div class="px-4">
 										<div>
 											<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">

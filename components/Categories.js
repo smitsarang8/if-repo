@@ -15,6 +15,7 @@ const Categories = () => {
       <section class="text-gray-600 ">
         <div class="container px-5 mx-auto">
           <div class="flex flex-wrap">
+            
           <a href="/search/shops/"  class="transition duration-300 p-4 md:w-1/5">
               <div class="h-full px-4 rounded-lg overflow-hidden">
               <img class="rounded-xl" src="https://images.unsplash.com/photo-1580554430120-94cfcb3adf25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />

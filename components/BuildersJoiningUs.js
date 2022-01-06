@@ -6,15 +6,12 @@ const BuildersJoiningUs = () => {
 			<div class="w-full">
 				<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
 					<div class="p-8 rounded-lg shadow">
-						<p class="text-center text-3xl sm-title text-gray-800">
-							Builders connected with us
-						</p>
 						<p
-							class="text-center mb-12 text-xl sm-title text-black "
+							class="text-center mb-12 text-gray-900 text-4xl tracking-tight font-extrabold sm:text-5xl dark:text-white"
 						>
 							We are trusted by
 						</p>
-
+						
 						<footer class="bg-white w-full py-8">
 							<div class="max-w-screen-xl mx-auto px-4">
 								<ul class="text-lg font-light flex flex-wrap justify-between">
