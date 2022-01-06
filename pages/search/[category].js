@@ -4,53 +4,94 @@ import useSWR from 'swr'
 import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer';
-import airtableAuth from '../airtableAuth'
-import ProductItem from '../components/ProductItem'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer';
+import airtableAuth from '../../airtableAuth'
+import ProductItem from '../../components/ProductItem'
+const SearchCategory = () => {
+	const router = useRouter()
+	const category_name = router.query.category
 
-const Shops = () => {
+
+
+	let meta_category_name = category_name
+	const meta_desc = "Explore " + meta_category_name + " on Real Dukaan.India's shop listing platform which lets you explore shops easily and efficiently. Explore commercial shops now."
+	if (category_name == "shops") {
+		meta_category_name = "Shops"
+	} else if (category_name == "offices") {
+		meta_category_name = "Offices"
+	} else if (category_name == "land-plots") {
+		meta_category_name = "Land and plots"
+	} else if (category_name == "storages") {
+		meta_category_name = "Godowns"
+	} else if (category_name == "hospitalities") {
+		meta_category_name = "Hospitality spaces"
+	}
+	let meta_og_title = "Explore " + meta_category_name + " - Real Dukaan"
+
+
 	const [purpose, setPurpose] = useState('all')
 	const [city, setCity] = useState('all')
-	const [areaLOV,setAreaLOV] = useState([])
+	const [areaLOV, setAreaLOV] = useState([])
 	const [product, setProduct] = useState([])
 	console.log("render = " + purpose + city)
 
-	const cityChanged = (e) =>{
+	const cityLOV = [
+		{ value: 'surat', name: 'Surat' },
+		{ value: 'ahmedabad', name: 'Ahmedabad' }
+	]
+	const cityChanged = (e) => {
 		setCity(e)
-		if(e=="surat"){
+		if (e == "surat") {
 			setAreaLOV([
 				{ value: 'adajan', name: 'Adajan' },
-				{ value: 'pal', name: 'Pal' }            
+				{ value: 'pal', name: 'Pal' }
 			]
 			)
-		}else if(e=="ahmedabad"){
+		} else if (e == "ahmedabad") {
 			setAreaLOV([
 				{ value: 'main', name: 'Main' },
 			]
 			)
+		}
 	}
+	let whichCategory = ""
+	const assignCategory = (name) => {
+		whichCategory = name
 	}
+	if (category_name == "shops") {
+		assignCategory("shop")
+	} else if (category_name == "offices") {
+		assignCategory("office")
+	} else if (category_name == "land-plots") {
+		assignCategory("land-plots")
+	} else if (category_name == "storages") {
+		assignCategory("storage")
+	} else if (category_name == "hospitalities") {
+		assignCategory("hospitality")
+	}
+
 	useEffect(() => {
 		let unmounted = false;
-
 		let address = ""
 		console.log("onmount")
-		if (purpose === "all" && city === "all") {
-			console.log("inside all")
-			address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop')";
-		} else if (purpose === "sell" && city != "all") {
-			address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='sell',{city}='${city}')`;
-		} else if (purpose === "rent" && city != "all") {
-			address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='rent',{city}='${city}')`;
-		} else if (purpose === "rent" && city === "all") {
-			address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='rent')`;
-		} else if (purpose === "sell" && city === "all") {
-			address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='sell')`;
-		}else if (purpose === "all" && city != "all") {
-			address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{city}='${city}')`;
-		}
 
+		if (whichCategory == "shop") {
+			if (purpose === "all" && city === "all") {
+				console.log("inside all")
+				address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop')";
+			} else if (purpose === "sell" && city != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='sell',{city}='${city}')`;
+			} else if (purpose === "rent" && city != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='rent',{city}='${city}')`;
+			} else if (purpose === "rent" && city === "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='rent')`;
+			} else if (purpose === "sell" && city === "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='sell')`;
+			} else if (purpose === "all" && city != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{city}='${city}')`;
+			}
+		}
 		fetch(address, {
 			method: 'get',
 			headers: new Headers({
@@ -65,29 +106,8 @@ const Shops = () => {
 			unmounted = true;
 		};
 	}, [purpose, city])
-	const router = useRouter();
 
-	// if(router.query.purpose){
-	// 	if(router.query.purpose=="buy"){
-	// 		const purpose = "sell"
-	// 	}
 
-	// 	setFilteredData(data)
-	// }
-	const getShops = async (key) => {
-		console.log(key.queryKey[1].city)
-		const cityFilter = key.queryKey[1].city
-		if (cityFilter) {
-			const address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{name}='" + cityFilter + "')";
-			const fetcher = async (url) => await axios.get(url, {
-				headers: {
-					'Authorization': airtableAuth.token
-				}
-			}).then((res) => res.data);
-			const { data, error } = useSWR(address, fetcher);
-			return data
-		}
-	}
 	const address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop')";
 	const fetcher = async (url) => await axios.get(url, {
 		headers: {
@@ -96,16 +116,8 @@ const Shops = () => {
 	}).then((res) => res.data);
 	const { data, error } = useSWR(address, fetcher);
 
-	const handleCities = (values) => {
-		console.log(values)
-	}
 
-	const cityLOV = [
-    { value: 'surat', name: 'Surat' },
-    { value: 'ahmedabad', name: 'Ahmedabad' }            
-]
-
-	if (error) return <div>	<Navbar />failed to load {error}			<Footer />
+	if (error) return <div>	<Navbar />failed to load {error}<Footer />
 	</div>
 	if (!data) return <div>	<Navbar />  <div class="flex py-12 flex-col">
 		<div class="flex flex-col">
@@ -140,15 +152,22 @@ const Shops = () => {
 	return (<>
 
 		<Head>
-			<title>Shops - Real Dukaan</title>
-			<meta name="description" content="Shops at Real dukaan" />
+			<title>{meta_category_name} - Real Dukaan</title>
+			<meta name="description" content={meta_desc} />
 			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
-			<meta property="og:title" content="Shops at Real dukaan" />
-			<meta property="og:description" content="Explore shops at Real Dukaan. India's shop listing platform which enables users to explore shops easily. Explore commercial shops now." />
+			<meta name="og:title" property="og:title" content={meta_og_title} />
+			<meta name="og:description" property="og:description" content={meta_desc} />
 			<meta property="og:url" content="https://rdtesting.netlify.app/" />
 			<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
 			<meta property="og:site_name" content="Real Dukaan" />
 			<meta property="og:type" content="website" />
+			<meta name="twitter:title" content={meta_og_title} />
+			<link rel="apple-touch-icon" href="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@dukandetails" />
+			<meta name="twitter:image" content="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
+			<meta name="twitter:description" content={meta_desc} />
+
 		</Head>
 		<Navbar />
 		<div class="container mx-auto flex py-6 flex-col">
@@ -211,11 +230,11 @@ const Shops = () => {
 										ease-in-out
 										m-0
 										focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-																					<option value="all" selected>All</option>
+										<option value="all" selected>All</option>
 
 										{cityLOV.map((e, key) => {
-        return <option key={key} value={e.value}>{e.name}</option>;
-    })}
+											return <option key={key} value={e.value}>{e.name}</option>;
+										})}
 									</select>
 								</div>
 								<div class="mb-3 ml-4 xl:w-96">
@@ -240,10 +259,10 @@ const Shops = () => {
 										ease-in-out
 										m-0
 										focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-											<option value="all" selected>All</option>
-											{areaLOV.map((e, key) => {
-        return <option key={key} value={e.value}>{e.name}</option>;
-    })}
+										<option value="all" selected>All</option>
+										{areaLOV.map((e, key) => {
+											return <option key={key} value={e.value}>{e.name}</option>;
+										})}
 									</select>
 								</div>
 
@@ -265,4 +284,4 @@ const Shops = () => {
 	)
 }
 
-export default Shops
+export default SearchCategory

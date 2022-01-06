@@ -215,6 +215,7 @@ const SignUpSellerOnboard = ({ children }) => {
 							userType: "seller",
 							cameAs: "seller",
 							timestamp: datetime,
+							keywords:event.target.name.value
 						}
 					}
 				]

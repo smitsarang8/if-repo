@@ -292,7 +292,8 @@ const uploadPhoto = () => {
 								package: "free",
 								businessType: event.target.businessType.value,
 								userType: "seller",
-								cameAs: "promotion"
+								cameAs: "promotion",
+								keywords:""
 							}
 						}
 					]

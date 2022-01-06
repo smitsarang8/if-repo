@@ -1,12 +1,11 @@
 import React from 'react'
 import useSWR from 'swr'
 import axios from 'axios'
-import Head from 'next/head'
 import Navbar from '../../components/Navbar'
 import { useRouter } from 'next/router'
 import Footer from '../../components/Footer'
 import airtableAuth from '../../airtableAuth'
-
+import Head from '../../components/ProductHead'
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth"
 import DatePicker from "react-datepicker";
@@ -686,18 +685,7 @@ const Product = ({ product, author }) => {
 	return (<>
 		{product.records.map(p => (
 			<span>
-				<Head>
-					<title>{p.fields.name} - Real Dukaan</title>
-					<meta name="description" content={p.fields.name} />
-					<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
-					<meta property="og:title" content={p.fields.name} />
-					<meta property="og:description" content="Visit this property on Real Dukaan. India's shop listing platform which enables users to explore shops easily and efficiently. Explore commercial shops now." />
-					<meta property="og:url" content="https://rdtesting.netlify.app/" />
-					<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
-					<meta property="og:site_name" content="Real Dukaan" />
-					<meta property="og:type" content="website" />
-
-				</Head>
+				<Head title={p.fields.name} keywords={p.fields.keywords} img={p.fields.get_thumbnail_url[0].thumbnails.large.url}/>
 				<Navbar />
 				<div>
 
