@@ -53,11 +53,8 @@ const SearchCategory = () => {
 				{ value: 'main', name: 'Main' },
 			]
 			)
-		}else if (e == "all") {
-			setAreaLOV([
-				
-			]
-			)
+		} else if (e == "all") {
+			setAreaLOV([])
 		}
 	}
 	const areaChanged = (e) => {
