@@ -4,7 +4,8 @@ import axios from 'axios'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/router'
 import { useEffect, useState, useRef } from 'react';
-import Head from '../components/CreatorHead'
+// import Head from '../components/CreatorHead'
+import Head from "next/head"
 import Footer from '../components/Footer';
 import TrendingShopComp from '../components/TrendingShopsComp'
 import airtableAuth from '../airtableAuth'
@@ -25,22 +26,14 @@ const Owner = ({ authors, products, projects }) => {
 	}).then((res) => res.data);
 	const { data, error } = useSWR(address, fetcher);
 	useEffect(() => {
-	// let address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status} = 'approved',{ucode} = '" + data.records[0].fields.ucode + "')" 
-	// alert(address)
-	// fetch(address, {
-		// 	method: 'get',
-		// 	headers: new Headers({
-		// 		'Authorization': airtableAuth.token
-		// 	}),
-		// }).then((res) => res.json()).then(json => {
-		// 	if (!unmounted) {
-		// 		setProduct(json)
-		// 	}
-		// });
-		// return () => {
-		// 	unmounted = true;
-		// };
-	},)
+		let unmounted = false;
+		let address = ""
+		return () => {
+			unmounted = true;
+		};
+
+	})
+
 
 	if (error) return <div>	<Navbar />failed to load {error}			<Footer />
 	</div>
@@ -116,8 +109,8 @@ const Owner = ({ authors, products, projects }) => {
 	if (!data) return <div>	<Navbar />  <div class="flex py-12 flex-col">dsadadsa</div></div>
 	
 	return (<>
-			<Head title={data.records[0].fields.name} keywords={data.records[0].fields.keywords} img={data.records[0].fields.thumbnailUrl[0].thumbnails.large.url}/>
-		{/* <Head>
+			{/* <Head title={data.records[0].fields.name} keywords={data.records[0].fields.keywords} img={data.records[0].fields.thumbnailUrl[0].thumbnails.large.url}/> */}
+		<Head>
 			<title> {data.records[0].fields.name} - Real Dukaan</title>
 			<meta name="description" content={data.records[0].fields.name} />
 			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
@@ -128,7 +121,7 @@ const Owner = ({ authors, products, projects }) => {
 			<meta property="og:site_name" content="Real Dukaan" />
 			<meta property="og:type" content="website" />
 
-		</Head> */}
+		</Head>
 		<Navbar />
 		<div class="flex py-12 flex-col">
 			<div class="flex flex-col">

@@ -4,15 +4,13 @@ const BuildersJoiningUs = () => {
 
 		<span>
 			<div class="w-full">
-				<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-					<div class="p-8 rounded-lg shadow">
-						<p
-							class="text-center mb-12 text-gray-900 text-4xl tracking-tight font-extrabold sm:text-5xl dark:text-white"
-						>
-							We are trusted by
-						</p>
+				
+				<section class="max-w-6xl mx-auto py-12">
+				<div class="max-w-2xl mx-auto  px-4 grid items-center grid-cols-1 gap-y-8 gap-x-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
+					<h2 class="px-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Trusted by</h2>
+
 						
-						<footer class="bg-white w-full py-8">
+						<footer class="px-4  bg-white w-full py-8">
 							<div class="max-w-screen-xl mx-auto px-4">
 								<ul class="text-lg font-light flex flex-wrap justify-between">
 									<a href="/s" class="my-2">

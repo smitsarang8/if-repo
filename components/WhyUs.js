@@ -23,22 +23,18 @@ const WhyUs = () => {
       <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
         <div class="border-t border-gray-200 pt-4">
           <dt class="font-medium text-gray-900">1. Explore</dt>
-          <dd class="mt-2 text-sm text-gray-500">Designed by Good Goods, Inc.</dd>
         </div>
 
         <div class="border-t border-gray-200 pt-4">
           <dt class="font-medium text-gray-900">2. Enquire</dt>
-          <dd class="mt-2 text-sm text-gray-500">Solid walnut base with rare earth magnets and powder coated steel card cover</dd>
         </div>
 
         <div class="border-t border-gray-200 pt-4">
           <dt class="font-medium text-gray-900">3. Get a callback</dt>
-          <dd class="mt-2 text-sm text-gray-500">Hand sanded and finished with natural oil</dd>
         </div>
 
         <div class="border-t border-gray-200 pt-4">
           <dt class="font-medium text-gray-900">4. Get your keys</dt>
-          <dd class="mt-2 text-sm text-gray-500">Wood card tray and 3 refill packs</dd>
         </div>
       </dl>
     </div>

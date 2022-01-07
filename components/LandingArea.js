@@ -18,6 +18,13 @@ const LandingArea = () => {
 		appId: '1:231286919067:web:c0ba041779d3353bafdb3e'
 	}
 	app = firebase.initializeApp(firebaseConfig);
+	const cityLOV = [
+		{ value: 'surat', name: 'Surat' },
+		{ value: 'ahmedabad', name: 'Ahmedabad' }            
+	]
+	const [areaLOV,setAreaLOV] = React.useState([])
+	const [city, setCity] = React.useState('all')
+
 	const [isLoggedIn, setIsChecked] = React.useState(false);
 	const [addedToFav, setAddedToFav] = React.useState(false);
 	const [isLoggedOut, signOutDone] = React.useState(false);
@@ -77,6 +84,22 @@ const LandingArea = () => {
 		}
 	}
 
+	
+	const cityChanged = (e) =>{
+		setCity(e)
+		if(e=="surat"){
+			setAreaLOV([
+				{ value: 'adajan', name: 'Adajan' },
+				{ value: 'pal', name: 'Pal' }            
+			]
+			)
+		}else if(e=="ahmedabad"){
+			setAreaLOV([
+				{ value: 'main', name: 'Main' },
+			]
+			)
+	}
+	}
 	const search = async event => {
 		event.preventDefault();
 		Router.push("/" + event.target.purpose.value + "/" + event.target.city.value + "/" + event.target.area.value)
@@ -117,12 +140,15 @@ const LandingArea = () => {
 									<label class="pl-1 text-white" htmlFor="city">
 										City
 										<select
+																				onChange={(e) => cityChanged(e.target.value)}
+
 											name="city"
 											v-model="city"
 											class="mt-2 text-black block w-52 py-4 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
 										>
-											<option value="surat" defaultValue="">Surat</option>
-										</select>
+	{cityLOV.map((e, key) => {
+        return <option key={key} value={e.value}>{e.name}</option>;
+    })}										</select>
 									</label>
 								</div>
 								<div class="pl-4 lg:mb-0 lg:w-full lg:max-w-xs">
@@ -133,8 +159,11 @@ const LandingArea = () => {
 											v-model="area"
 											class="mt-2 text-black block w-52 py-4 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
 										>
-											<option value="adajan" defaultValue="">Adajan</option>
-											<option value="pal">Pal</option>
+																						<option value="all" selected>All</option>
+
+											{areaLOV.map((e, key) => {
+        return <option key={key} value={e.value}>{e.name}</option>;
+    })}
 										</select>
 									</label>
 								</div>

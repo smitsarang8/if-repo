@@ -11,6 +11,7 @@ import "firebase/compat/auth"
 import DatePicker from "react-datepicker";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
+import { useEffect, useState, useRef } from 'react';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -20,6 +21,9 @@ const Product = ({ author }) => {
 		'https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
 		'https://images.unsplash.com/photo-1641057350241-c05da7c70a9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
 	];
+	const [authorName , setAuthorName] = React.useState('')
+	const [authorUrl , setAuthorUrl] = React.useState('')
+	const [authorImg , setAuthorImg] = React.useState('')
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [vcScheduleDate, setStartDate] = React.useState(new Date());
 
@@ -46,13 +50,38 @@ const Product = ({ author }) => {
 	}).then((res) => res.data);
 	const { data, error } = useSWR(address, fetcher);
 	const product = data
+
+	useEffect(() => {
+		let unmounted = false;
+		let address = ""
+		address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/la?filterByFormula=AND({status}='approved',{ucode}='S2611202128')";
+		console.log("onmount")
+
+		fetch(address, {
+			method: 'get',
+			headers: new Headers({
+				'Authorization': airtableAuth.token
+			}),
+		}).then((res) => res.json()).then(json => {
+			if (!unmounted) {
+				setAuthorName(json.records[0].fields.name)
+				setAuthorUrl(json.records[0].fields.slugUrl)
+				setAuthorImg(json.records[0].fields.thumbnailUrl[0].thumbnails.large.url)
+			}
+		});
+		return () => {
+			unmounted = true;
+		};
+
+	})
+
 	const whyThis = () => {
 		const infosArray = product.records[0].fields.infos.split(",")
 		if (infosArray) {
 			var listItems = []
 			listItems = infosArray.map((number) => {
 				if (number) {
-					return <div v-if="p.fields.rera" class="p-2">
+					return <div v-if="p.fields.rera" class="p-1">
 						<div class="flex-col flex justify-left items-left">
 							<div class="text-left flex flex-col">
 								<p class="text-sm font-medium">{number}</p>
@@ -729,15 +758,15 @@ const Product = ({ author }) => {
 												</h3>
 
 												<p class="mt-1 text-gray-900">
-													{/* {data.records.map(a => (<span>Listed by: <a href={a.fields.slugUrl} class="text-indigo-500">{a.fields.name}</a> </span>))} */}
+													<span>Listed by: <a href={authorUrl} class="text-indigo-500">{authorName}</a> </span>
 												</p>
 												{projectLaunch()}
-												<div class="pt-2 max-w-12xl mx-auto bg-white rounded-lg">
+												<div class="pt-2 max-w-12xl  bg-white rounded-lg">
 													<div class="flex items-center">
 														<span class="h-6 w-6 relative">
 															<img src="https://img.icons8.com/color/48/000000/checked-2--v1.png" />
 														</span>
-														<p class="text-2xl  text-gray-700 hover:underline">Key specifications</p>
+														<p class="text-2xl text-gray-700 hover:underline">Key specifications</p>
 													</div>
 													<p class="mt-2 text-gray-600">
 														<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-2">
@@ -1550,7 +1579,18 @@ const Product = ({ author }) => {
 													Place your enquiry now.
 												</label>
 													
-											
+												<a
+														href={authorUrl}
+														class="flex items-center my-2"
+													>
+														<img
+															src={authorImg}
+															alt={authorName}
+															class="w-20 h-20 mr-4"
+														/>
+														<p class="text-black text-sm">{authorName}</p>
+
+													</a>
 
 												<input type="hidden" name="remember" value="true" />
 												<div class="rounded-md -space-y-px">
