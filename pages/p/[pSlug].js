@@ -15,7 +15,7 @@ import 'react-image-lightbox/style.css'; // This only needs to be imported once 
 import "react-datepicker/dist/react-datepicker.css";
 
 
-const Product = ({ product, author }) => {
+const Product = ({ author }) => {
 	const images = [
 		'https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
 		'https://images.unsplash.com/photo-1641057350241-c05da7c70a9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -38,8 +38,14 @@ const Product = ({ product, author }) => {
 	const [img2, modalImg2Clicked] = React.useState(false);
 	const [img3, modalImg3Clicked] = React.useState(false);
 
-
-	const { pSlug } = router.query
+	const address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{slug}='" + router.query.pSlug + "')";
+	const fetcher = async (url) => await axios.get(url, {
+		headers: {
+			'Authorization': airtableAuth.token
+		}
+	}).then((res) => res.data);
+	const { data, error } = useSWR(address, fetcher);
+	const product = data
 	const whyThis = () => {
 		const infosArray = product.records[0].fields.infos.split(",")
 		if (infosArray) {
@@ -723,7 +729,7 @@ const Product = ({ product, author }) => {
 												</h3>
 
 												<p class="mt-1 text-gray-900">
-													{author.records.map(a => (<span>Listed by: <a href={a.fields.slugUrl} class="text-indigo-500">{a.fields.name}</a> </span>))}
+													{/* {data.records.map(a => (<span>Listed by: <a href={a.fields.slugUrl} class="text-indigo-500">{a.fields.name}</a> </span>))} */}
 												</p>
 												{projectLaunch()}
 												<div class="pt-2 max-w-12xl mx-auto bg-white rounded-lg">
@@ -1543,20 +1549,8 @@ const Product = ({ product, author }) => {
 												<label class="block text-xs  text-gray-700">
 													Place your enquiry now.
 												</label>
-												{author.records.map(a => (
-													<a
-														href={a.fields.slugUrl}
-														class="flex items-center my-2"
-													>
-														<img
-															src={a.fields.thumbnailUrl[0].thumbnails.large.url}
-															alt={a.fields.name}
-															class="w-20 h-20 mr-4"
-														/>
-														<p class="text-black text-sm">{a.fields.name}</p>
-
-													</a>
-												))}
+													
+											
 
 												<input type="hidden" name="remember" value="true" />
 												<div class="rounded-md -space-y-px">
@@ -3764,46 +3758,5 @@ const Product = ({ product, author }) => {
 // 		</>
 // 	)
 // }
-
-export const getStaticProps = async (context) => {
-	const res = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{slug}='" + context.params.pSlug + "')", {
-		method: 'get',
-		headers: new Headers({
-			'Authorization': 'Bearer keyLRae2Fru3dnFqr',
-		}),
-	})
-	const resp = await res.json()
-	const ucode = resp.records[0].fields.ucode
-	const ress = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/la?filterByFormula=AND({status}='approved',{ucode}='" + ucode + "')", {
-		method: 'get',
-		headers: new Headers({
-			'Authorization': 'Bearer keyLRae2Fru3dnFqr',
-		}),
-	})
-	const resa = await ress.json()
-
-	return {
-		props: {
-			product: resp,
-			author: resa
-		},
-	}
-}
-
-export async function getStaticPaths() {
-	const res = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?&filterByFormula=AND({status}='approved')", {
-		method: 'get',
-		headers: new Headers({
-			'Authorization': 'Bearer keyLRae2Fru3dnFqr',
-		}),
-	})
-	const products = await res.json()
-	const paths = products.records.map((user) => ({
-		params: { pSlug: String(user.fields.slug) },
-
-	}))
-
-	return { paths, fallback: true }
-}
 
 export default Product
