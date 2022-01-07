@@ -30,9 +30,11 @@ const SearchCategory = () => {
 
 	const [purpose, setPurpose] = useState('all')
 	const [city, setCity] = useState('all')
+	const [area, setArea] = useState('all')
+
 	const [areaLOV, setAreaLOV] = useState([])
 	const [product, setProduct] = useState([])
-	console.log("render = " + purpose + city)
+	console.log("render = " + purpose + city + area)
 
 	const cityLOV = [
 		{ value: 'surat', name: 'Surat' },
@@ -51,7 +53,16 @@ const SearchCategory = () => {
 				{ value: 'main', name: 'Main' },
 			]
 			)
+		}else if (e == "all") {
+			setAreaLOV([
+				
+			]
+			)
 		}
+	}
+	const areaChanged = (e) => {
+			setArea(e)
+			
 	}
 	let whichCategory = ""
 	const assignCategory = (name) => {
@@ -75,76 +86,127 @@ const SearchCategory = () => {
 		console.log("onmount")
 
 		if (whichCategory == "shop") {
-			if (purpose === "all" && city === "all") {
+			if (purpose === "all" && city === "all" && area==="all") {
 				console.log("inside all")
 				address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop')";
-			} else if (purpose === "sell" && city != "all") {
+			} else if (purpose === "sell" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='sell',{city}='${city}')`;
-			} else if (purpose === "rent" && city != "all") {
+			}else if (purpose === "sell" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='sell',{city}='${city}',{area}='${area}')`;
+			} else if (purpose === "rent" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='rent',{city}='${city}')`;
+			}else if (purpose === "rent" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='rent',{city}='${city}',{area}='${area}')`;
 			} else if (purpose === "rent" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='rent')`;
 			} else if (purpose === "sell" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{purpose}='sell')`;
-			} else if (purpose === "all" && city != "all") {
+			} else if (purpose === "all" && city != "all" && area=="all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{city}='${city}')`;
-			}
+			} else if (purpose === "all" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop',{city}='${city}',{area}='${area}')`;
+			} 
 		}else if (whichCategory == "office") {
-			if (purpose === "all" && city === "all") {
+			if (purpose === "all" && city === "all" && area==="all") {
 				address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office')";
-			} else if (purpose === "sell" && city != "all") {
+			} else if (purpose === "sell" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{purpose}='sell',{city}='${city}')`;
-			} else if (purpose === "rent" && city != "all") {
+			}else if (purpose === "sell" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{purpose}='sell',{city}='${city}',{area}='${area}')`;
+			} else if (purpose === "rent" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{purpose}='rent',{city}='${city}')`;
+			}else if (purpose === "rent" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{purpose}='rent',{city}='${city}',{area}='${area}')`;
 			} else if (purpose === "rent" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{purpose}='rent')`;
 			} else if (purpose === "sell" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{purpose}='sell')`;
-			} else if (purpose === "all" && city != "all") {
+			} else if (purpose === "all" && city != "all" && area=="all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{city}='${city}')`;
-			}
+			} else if (purpose === "all" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office',{city}='${city}',{area}='${area}')`;
+			} 
 		}else if (whichCategory == "land-plots") {
-			if (purpose === "all" && city === "all") {
+			if (purpose === "all" && city === "all" && area==="all") {
 				address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot')";
-			} else if (purpose === "sell" && city != "all") {
+			} else if (purpose === "sell" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{purpose}='sell',{city}='${city}')`;
-			} else if (purpose === "rent" && city != "all") {
+			}else if (purpose === "sell" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{purpose}='sell',{city}='${city}',{area}='${area}')`;
+			} else if (purpose === "rent" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{purpose}='rent',{city}='${city}')`;
+			}else if (purpose === "rent" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{purpose}='rent',{city}='${city}',{area}='${area}')`;
 			} else if (purpose === "rent" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{purpose}='rent')`;
 			} else if (purpose === "sell" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{purpose}='sell')`;
-			} else if (purpose === "all" && city != "all") {
+			} else if (purpose === "all" && city != "all" && area=="all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{city}='${city}')`;
-			}
-		}else if (whichCategory == "storage") {
-			if (purpose === "all" && city === "all") {
+			} else if (purpose === "all" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot',{city}='${city}',{area}='${area}')`;
+			} 
+		}else if (whichCategory == "office") {
+			if (purpose === "all" && city === "all" && area==="all") {
 				address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage')";
-			} else if (purpose === "sell" && city != "all") {
+			} else if (purpose === "sell" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='sell',{city}='${city}')`;
-			} else if (purpose === "rent" && city != "all") {
+			}else if (purpose === "sell" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='sell',{city}='${city}',{area}='${area}')`;
+			} else if (purpose === "rent" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='rent',{city}='${city}')`;
+			}else if (purpose === "rent" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='rent',{city}='${city}',{area}='${area}')`;
 			} else if (purpose === "rent" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='rent')`;
 			} else if (purpose === "sell" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='sell')`;
-			} else if (purpose === "all" && city != "all") {
+			} else if (purpose === "all" && city != "all" && area=="all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{city}='${city}')`;
-			}
-		}else if (whichCategory == "hospitality") {
-			if (purpose === "all" && city === "all") {
+			} else if (purpose === "all" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{city}='${city}',{area}='${area}')`;
+			} 
+		}else if (whichCategory == "storage") {
+			if (purpose === "all" && city === "all" && area==="all") {
+				address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage')";
+			} else if (purpose === "sell" && city != "all" && area == "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='sell',{city}='${city}')`;
+			}else if (purpose === "sell" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='sell',{city}='${city}',{area}='${area}')`;
+			} else if (purpose === "rent" && city != "all" && area == "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='rent',{city}='${city}')`;
+			}else if (purpose === "rent" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='rent',{city}='${city}',{area}='${area}')`;
+			} else if (purpose === "rent" && city === "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='rent')`;
+			} else if (purpose === "sell" && city === "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{purpose}='sell')`;
+			} else if (purpose === "all" && city != "all" && area=="all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{city}='${city}')`;
+			} else if (purpose === "all" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage',{city}='${city}',{area}='${area}')`;
+			} 
+		}
+		else if (whichCategory == "hospitality") {
+			if (purpose === "all" && city === "all" && area==="all") {
 				address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality')";
-			} else if (purpose === "sell" && city != "all") {
+			} else if (purpose === "sell" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{purpose}='sell',{city}='${city}')`;
-			} else if (purpose === "rent" && city != "all") {
+			}else if (purpose === "sell" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{purpose}='sell',{city}='${city}',{area}='${area}')`;
+			} else if (purpose === "rent" && city != "all" && area == "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{purpose}='rent',{city}='${city}')`;
+			}else if (purpose === "rent" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{purpose}='rent',{city}='${city}',{area}='${area}')`;
 			} else if (purpose === "rent" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{purpose}='rent')`;
 			} else if (purpose === "sell" && city === "all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{purpose}='sell')`;
-			} else if (purpose === "all" && city != "all") {
+			} else if (purpose === "all" && city != "all" && area=="all") {
 				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{city}='${city}')`;
-			}
+			} else if (purpose === "all" && city != "all" && area != "all") {
+				address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality',{city}='${city}',{area}='${area}')`;
+			} 
 		}
 		fetch(address, {
 			method: 'get',
@@ -159,7 +221,7 @@ const SearchCategory = () => {
 		return () => {
 			unmounted = true;
 		};
-	}, [purpose, city])
+	}, [purpose, city, area])
 
 	let address =""
 	if (whichCategory == "shop") {
@@ -257,7 +319,6 @@ const SearchCategory = () => {
 						</h1>
 						<span class="text-2xl sm-title text-gray-900">
 							<div class="py-4 px-4 flex">
-
 								<div class="mb-3 ml-4 xl:w-96">
 									<label class="pl-1 font-regular text-sm text-black" htmlFor="purpose">
 										Purpose
@@ -319,7 +380,7 @@ const SearchCategory = () => {
 
 									</label>
 									<select
-										onChange={(e) => console.log(e.target.value)}
+										onChange={(e) => areaChanged(e.target.value)}
 										class="form-select
 										block
 										w-full
