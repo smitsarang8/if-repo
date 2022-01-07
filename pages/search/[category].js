@@ -107,8 +107,18 @@ const SearchCategory = () => {
 		};
 	}, [purpose, city])
 
-
-	const address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop')";
+	let address =""
+	if (whichCategory == "shop") {
+	address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='shop')";
+	}else if (whichCategory == "office") {
+		address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='office')";
+	}else if (whichCategory == "land-plots") {
+		address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='land-plot')";
+	}else if (whichCategory == "storage") {
+		address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='storage')";
+	}else if (whichCategory == "hospitality") {
+		address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{propertyType}='hospitality')";
+	}
 	const fetcher = async (url) => await axios.get(url, {
 		headers: {
 			'Authorization': airtableAuth.token
@@ -116,7 +126,19 @@ const SearchCategory = () => {
 	}).then((res) => res.data);
 	const { data, error } = useSWR(address, fetcher);
 
-
+	const getSearchHeader=()=>{
+		if (category_name == "shops") {
+			return meta_category_name
+		} else if (category_name == "offices") {
+			return meta_category_name
+		} else if (category_name == "land-plots") {
+			return meta_category_name
+		} else if (category_name == "storages") {
+			return meta_category_name
+		} else if (category_name == "hospitalities") {
+			return meta_category_name
+		}
+	}
 	if (error) return <div>	<Navbar />failed to load {error}<Footer />
 	</div>
 	if (!data) return <div>	<Navbar />  <div class="flex py-12 flex-col">
@@ -177,7 +199,7 @@ const SearchCategory = () => {
 				<div class="max-w-2xl mx-auto py-6 sm:py-6 lg:py-6 lg:max-w-none">
 					<div class="lg:w-1/2 w-full py-6 lg:mb-0">
 						<h1 class="px-4 sm:text-3xl text-2xl sm-title text-gray-900">
-							Shops
+							{getSearchHeader()}
 						</h1>
 						<span class="text-2xl sm-title text-gray-900">
 							<div class="py-4 px-4 flex">

@@ -3,8 +3,8 @@ const WhyUs = () => {
 	return (
 
 		<div class="container mx-auto px-6 p-6 bg-white  rounded-lg">
-			<div class="p-8 bg-white  rounded-lg shadow">
-				<p
+			<div class="bg-white  rounded-lg shadow">
+				{/* <p
 					class="text-center sm:text-3xl text-2xl sm-title text-gray-800"
 				>
 					Why Real Dukaan ?
@@ -13,9 +13,40 @@ const WhyUs = () => {
 					class="text-center mb-12 text-lg sm-title text-black"
 				>
 					Get shops in 4 easy steps.
-				</p>
+				</p> */}
+<div class="bg-white">
+  <div class="max-w-2xl mx-auto  px-4 grid items-center grid-cols-1 gap-y-8 gap-x-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
+    <div>
+      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Why Real Dukaan ?</h2>
+      <p class="mt-4 text-gray-500">Get your commercial shop in 4 easy steps.</p>
 
-				<div class="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 gap-4">
+      <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">1. Explore</dt>
+          <dd class="mt-2 text-sm text-gray-500">Designed by Good Goods, Inc.</dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">2. Enquire</dt>
+          <dd class="mt-2 text-sm text-gray-500">Solid walnut base with rare earth magnets and powder coated steel card cover</dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">3. Get a callback</dt>
+          <dd class="mt-2 text-sm text-gray-500">Hand sanded and finished with natural oil</dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">4. Get your keys</dt>
+          <dd class="mt-2 text-sm text-gray-500">Wood card tray and 3 refill packs</dd>
+        </div>
+      </dl>
+    </div>
+   
+  </div>
+</div>
+
+				{/* <div class="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 gap-4">
 					<div class="p-4">
 						<div class="flex-col flex justify-center items-center">
 							<div
@@ -128,7 +159,7 @@ const WhyUs = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)

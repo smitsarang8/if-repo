@@ -17,7 +17,7 @@ const BuildersJoiningUs = () => {
 								<ul class="text-lg font-light flex flex-wrap justify-between">
 									<a href="/s" class="my-2">
 									<img
-										src="https://scontent.fstv2-1.fna.fbcdn.net/v/t1.6435-9/82051100_2727334210714855_546510270311170048_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=973b4a&_nc_ohc=-MIeFEsDKCAAX8GNoq4&_nc_ht=scontent.fstv2-1.fna&oh=955f2c698b3dc2f9f9b9f036329d2a1c&oe=61CF9645"
+										src="https://newprojects.99acres.com/projects/rajhans_ecobuild_llp/sadrv6he.jpg"
 										class="h-32 w-32 text-gray-400 hover:text-gray-800 transition-colors duration-200"
 									/>
 								</a>
