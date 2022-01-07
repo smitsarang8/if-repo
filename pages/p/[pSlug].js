@@ -652,7 +652,7 @@ const Product = ({ product, author }) => {
 
 
 	// if (error) return <div><Navbar />failed to load {error}<Footer /></div>
-	if (!product) return <div><Navbar />  <div class="flex py-12 flex-col">
+	if (!product) return <div><Navbar /><div class="flex py-12 flex-col">
 		<div class="flex flex-col">
 			<div class="bg-white w-1/2 mx-auto p-2 sm:p-4 sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none ">
 				<div class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-200 animate-pulse">
@@ -683,9 +683,8 @@ const Product = ({ product, author }) => {
 		</div> </div>		<Footer /></div>
 
 	return (<>
-		{product.records.map(p => (
 			<span>
-				<Head title={p.fields.name} keywords={p.fields.keywords} img={p.fields.get_thumbnail_url[0].thumbnails.large.url} />
+				<Head title={product.records[0].fields.name} keywords={product.records[0].fields.keywords} img={product.records[0].fields.get_thumbnail_url[0].thumbnails.large.url} />
 				<Navbar />
 				<div>
 
@@ -702,11 +701,11 @@ const Product = ({ product, author }) => {
 									
 										<div class="px-4 max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
 											<div class=" grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-2 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
-												<img onClick={() => openModalThumbnail()} src={p.fields.get_thumbnail_url[0].thumbnails.large.url} alt="" class=" w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy" />
+												<img onClick={() => openModalThumbnail()} src={product.records[0].fields.get_thumbnail_url[0].thumbnails.large.url} alt="" class=" w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy" />
 
-												<img onClick={() => openModalThumbnail()} src={p.fields.get_thumbnail_url[0].thumbnails.large.url} alt="" class=" w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy" />
-												<img onClick={() => openModalImg2()} src={p.fields.image2[0].thumbnails.large.url} alt="" class=" w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy" />
-												<img onClick={() => openModalImg3()} src={p.fields.image3[0].thumbnails.large.url} alt="" class=" w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy" />
+												<img onClick={() => openModalThumbnail()} src={product.records[0].fields.get_thumbnail_url[0].thumbnails.large.url} alt="" class=" w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy" />
+												<img onClick={() => openModalImg2()} src={product.records[0].fields.image2[0].thumbnails.large.url} alt="" class=" w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy" />
+												<img onClick={() => openModalImg3()} src={product.records[0].fields.image3[0].thumbnails.large.url} alt="" class=" w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy" />
 
 											</div>
 											
@@ -714,13 +713,13 @@ const Product = ({ product, author }) => {
 											</dl>
 											
 											<div class="col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4">
-											<p class="text-sm leading-4 font-medium text-black ">{purpose()} - In {p.fields.address_1}</p>
+											<p class="text-sm leading-4 font-medium text-black ">{purpose()} - In {product.records[0].fields.address_1}</p>
 
-											<h1 class=" text-lg font-semibold text-black  md:text-2xl ">{p.fields.name}</h1>
+											<h1 class=" text-lg font-semibold text-black  md:text-2xl ">{product.records[0].fields.name}</h1>
 											
 												<p class="text-2xl text-gray-900">{pricings()}</p>
 												<h3 class="mt-2 text-gray-900">
-													Listed on : {p.fields.listed_on}
+													Listed on : {product.records[0].fields.listed_on}
 												</h3>
 
 												<p class="mt-1 text-gray-900">
@@ -1209,7 +1208,7 @@ const Product = ({ product, author }) => {
 								<>
 									(
 									<Lightbox
-										mainSrc={p.fields.get_thumbnail_url[0].thumbnails.large.url}
+										mainSrc={product.records[0].fields.get_thumbnail_url[0].thumbnails.large.url}
 										onCloseRequest={() => modalImgThumbClicked(false)}
 									/>
 									)
@@ -1219,7 +1218,7 @@ const Product = ({ product, author }) => {
 							{img1 ? (
 								<>
 									<Lightbox
-										mainSrc={p.fields.image1[0].thumbnails.large.url}
+										mainSrc={product.records[0].fields.image1[0].thumbnails.large.url}
 										onCloseRequest={() => modalImg1Clicked(false)}
 									/>
 
@@ -1228,7 +1227,7 @@ const Product = ({ product, author }) => {
 							{img2 ? (
 								<>
 									<Lightbox
-										mainSrc={p.fields.image2[0].thumbnails.large.url}
+										mainSrc={product.records[0].fields.image2[0].thumbnails.large.url}
 										onCloseRequest={() => modalImg2Clicked(false)}
 									/>
 								</>
@@ -1236,7 +1235,7 @@ const Product = ({ product, author }) => {
 							{img3 ? (
 								<>
 									<Lightbox
-										mainSrc={p.fields.image3[0].thumbnails.large.url}
+										mainSrc={product.records[0].fields.image3[0].thumbnails.large.url}
 										onCloseRequest={() => modalImg3Clicked(false)}
 									/>
 								</>
@@ -1319,64 +1318,64 @@ const Product = ({ product, author }) => {
 		
 													<p class="mt-2 text-gray-600">
 														<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-2">
-															<div v-if="p.fields.rera" class="p-4">
+															<div v-if="product.records[0].fields.rera" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Location</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.address_1}
+																			{product.records[0].fields.address_1}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.square_feet" class="p-4">
+															<div v-if="product.records[0].fields.square_feet" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Area</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.area}
+																			{product.records[0].fields.area}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.size" class="p-4">
+															<div v-if="product.records[0].fields.size" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">City</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.city}
+																			{product.records[0].fields.city}
 																		</p>
 																	</div>
 																</div>
 															</div>
 														</div>
 														<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-2">
-															<div v-if="p.fields.rera" class="p-4">
+															<div v-if="product.records[0].fields.rera" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">State</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.state}
+																			{product.records[0].fields.state}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.square_feet" class="p-4">
+															<div v-if="product.records[0].fields.square_feet" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Zipcode</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.zipcode}
+																			{product.records[0].fields.zipcode}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.size" class="p-4">
+															<div v-if="product.records[0].fields.size" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Country</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.country}
+																			{product.records[0].fields.country}
 																		</p>
 																	</div>
 																</div>
@@ -1390,32 +1389,32 @@ const Product = ({ product, author }) => {
 												<p class="mt-2 text-gray-600">
 													<div class="">
 														<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-															<div v-if="p.fields.rera" class="p-4">
+															<div v-if="product.records[0].fields.rera" class="p-4">
 																<div class="flex-col flex">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">RERA</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.rera}
+																			{product.records[0].fields.rera}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.square_feet" class="p-4">
+															<div v-if="product.records[0].fields.square_feet" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Square feet</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.square_feet}
+																			{product.records[0].fields.square_feet}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.size" class="p-4">
+															<div v-if="product.records[0].fields.size" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Size</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.size}
+																			{product.records[0].fields.size}
 																		</p>
 																	</div>
 																</div>
@@ -1424,32 +1423,32 @@ const Product = ({ product, author }) => {
 													</div>
 													<div class="">
 														<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4">
-															<div v-if="p.fields.construction_status" class="p-4">
+															<div v-if="product.records[0].fields.construction_status" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Status</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.construction_status}
+																			{product.records[0].fields.construction_status}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.floor_no" class="p-4">
+															<div v-if="product.records[0].fields.floor_no" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Floor</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.floor_no}
+																			{product.records[0].fields.floor_no}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.total_floor" class="p-4">
+															<div v-if="product.records[0].fields.total_floor" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Total floor</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.total_floor}
+																			{product.records[0].fields.total_floor}
 																		</p>
 																	</div>
 																</div>
@@ -1459,32 +1458,32 @@ const Product = ({ product, author }) => {
 
 													<div class="">
 														<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4">
-															<div v-if="p.fields.property_facing" class="p-4">
+															<div v-if="product.records[0].fields.property_facing" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Property Facing</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.property_facing}
+																			{product.records[0].fields.property_facing}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.side" class="p-4">
+															<div v-if="product.records[0].fields.side" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Side</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.side}
+																			{product.records[0].fields.side}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.age" class="p-4">
+															<div v-if="product.records[0].fields.age" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Age of property</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.age}
+																			{product.records[0].fields.age}
 																		</p>
 																	</div>
 																</div>
@@ -1493,32 +1492,32 @@ const Product = ({ product, author }) => {
 													</div>
 													<div class="">
 														<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4">
-															<div v-if="p.fields.usage_status" class="p-4">
+															<div v-if="product.records[0].fields.usage_status" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Usage status</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.usage_status}
+																			{product.records[0].fields.usage_status}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.posession" class="p-4">
+															<div v-if="product.records[0].fields.posession" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Possession</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.posession}
+																			{product.records[0].fields.posession}
 																		</p>
 																	</div>
 																</div>
 															</div>
-															<div v-if="p.fields.propertyBuilder" class="p-4">
+															<div v-if="product.records[0].fields.propertyBuilder" class="p-4">
 																<div class="flex-col flex justify-left items-left">
 																	<div class="text-left flex flex-col">
 																		<p class="text-sm font-medium">Property builder</p>
 																		<p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-																			{p.fields.propertyBuilder}
+																			{product.records[0].fields.propertyBuilder}
 																		</p>
 																	</div>
 																</div>
@@ -1618,7 +1617,7 @@ const Product = ({ product, author }) => {
 													</div>
 												</div>
 												<label class="py-2 block text-sm font-medium text-gray-700">
-													Do you want extra services or focusing property only ?
+													Do you want extra services or looking for property only ?
 												</label>
 												<label class="inline-flex items-center mt-3 px-4">
 													<input
@@ -1756,8 +1755,7 @@ const Product = ({ product, author }) => {
 					</div>
 				</div>
 			</span>
-		))}
-		<Footer />
+	<Footer />
 	</>
 	)
 }

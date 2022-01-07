@@ -12,8 +12,6 @@ const SearchCategory = () => {
 	const router = useRouter()
 	const category_name = router.query.category
 
-
-
 	let meta_category_name = category_name
 	const meta_desc = "Explore " + meta_category_name + " on Real Dukaan.India's shop listing platform which lets you explore shops easily and efficiently. Explore commercial shops now."
 	if (category_name == "shops") {
@@ -141,7 +139,7 @@ const SearchCategory = () => {
 	}
 	if (error) return <div>	<Navbar />failed to load {error}<Footer />
 	</div>
-	if (!data) return <div>	<Navbar />  <div class="flex py-12 flex-col">
+	if (!data) return <div>	<Navbar /><div class="flex py-12 flex-col">
 		<div class="flex flex-col">
 			<div class="bg-white w-1/2 mx-auto p-2 sm:p-4 sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none ">
 				<div class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-200 animate-pulse">
