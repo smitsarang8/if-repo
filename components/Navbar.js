@@ -20,9 +20,9 @@ const Navbar = () => {
 							animation: typing 2s steps(22), blink .5s step-end infinite alternate;
 							white-space: nowrap;
 							overflow: hidden;
-							border-right: 3px solid;
+							border-right: 3px solid transparent;
 							font-family: 'Poppins', sans-serif;
-							font-size: 1.5em;
+							font-size: 1em;
 							color:white
 						  }
 						  
@@ -32,11 +32,13 @@ const Navbar = () => {
 							}
 						  }
 							  
-						  @keyframes blink {
+						  @keyframes blink-caret {
+							
 							50% {
-							  border-color: transparent
-							}
+								border-color: white
+							  }
 						  }
+
 						`}
 
 						</style>
