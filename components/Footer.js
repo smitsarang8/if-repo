@@ -15,7 +15,7 @@ const Footer = () => {
 									>
 										<span class="text-xl">Indians Who Freelance</span>
 									</a>
-									<p class="mt-2 text-sm text-white">Freelancing made easy</p>
+									<p class="mt-2 text-sm text-white">Finding freelancers made easy</p>
 								</div>
 								<div
 									class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center"

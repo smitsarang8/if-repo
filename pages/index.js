@@ -16,7 +16,7 @@ export default function Home(products) {
   return (
     <div>
       <Head>
-        <title>Indians Who Freelance - Freelancing made easy</title>
+        <title>Indians Who Freelance - Finding freelancers made easy</title>
         <meta name="description" content="Indians Who Freelance is India's " />
         <meta property="og:title" content="Indians Who Freelance" />
         <meta property="og:description" content="Indians Who Freelance is India's " />

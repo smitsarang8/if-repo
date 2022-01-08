@@ -12,6 +12,10 @@ const Navbar = () => {
 						{/* <h2 class="font-bold text-black text-4xl">If.</h2> */}
 						<img src='https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91' class="h-14 mr-3" viewBox="0 0 52 72" />
 					</a>
+					<a href="/" class="flex">
+						<h2 class="font-md text-black">Indians Who Freelance</h2>
+						{/* <img src='https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91' class="h-14 mr-3" viewBox="0 0 52 72" /> */}
+					</a>
 				
 					<button data-collapse-toggle="mobile-menu" type="button" class="md:hidden ml-3 text-gray-500 focus:outline-none focus:ring-none focus:ring-gray-200 rounded-lg text-sm p-2 inline-flex items-center" aria-controls="mobile-menu-2" aria-expanded="false">
 						<a href="/join"

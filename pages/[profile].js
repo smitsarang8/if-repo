@@ -13,19 +13,19 @@ const Owner = ({ authors, products, projects }) => {
 	const { id } = router.query
 	const [shareVar, setClipboard] = React.useState(false);
 
-	const address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/join_req?filterByFormula=AND({status}='live',{slug}='" + router.query.profile + "')";
-	const fetcher = async (url) => await axios.get(url, {
-		headers: {
-			'Authorization': airtableAuth.token
-		}
-	}).then((res) => res.data);
-	const { data, error } = useSWR(address, fetcher);
+	// const address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/join_req?filterByFormula=AND({status}='live',{slug}='" + router.query.profile + "')";
+	// const fetcher = async (url) => await axios.get(url, {
+	// 	headers: {
+	// 		'Authorization': airtableAuth.token
+	// 	}
+	// }).then((res) => res.data);
+	// const { data, error } = useSWR(address, fetcher);
 
 	useEffect(() => {
 		let unmounted = false;
 		let address = ""
 		// if (data) {
-		// 	address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{ucode}='" + data.records[0].fields.ucode + "')";
+		// 	address = "https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?filterByFormula=AND({status}='approved',{ucode}='" + authors.records[0].fields.ucode + "')";
 		// }
 		// fetch(address, {
 		// 	method: 'get',
@@ -42,26 +42,53 @@ const Owner = ({ authors, products, projects }) => {
 		};
 
 	})
+const skills = () => {
+		const infosArray = authors.records[0].fields.skills.split(",")
+		if (infosArray) {
+			var listItems = []
+			listItems = infosArray.map((skill) => {
+				if (skill) {
+					return <div class="flex justify-start space-x-2">
+										<p class="text-white hover:text-blue-300">
+										q
+										</p>
+									
 
+
+								</div>
+					// return <span class="px-4 py-2 flex items-center text-base rounded-full text-blue-600  bg-blue-200 ">
+					// 	<svg width="20" fill="currentColor" height="20" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+					// 		<path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z">
+					// 		</path>
+					// 	</svg>
+					// 	{skill}
+					// </span>
+					;
+				}
+			})
+		}
+		return (
+
+			<div class="flex flex-col">{listItems}</div>
+		);
+	}
 	const handleShareButton = () => {
 		// Check if navigator.share is supported by the browser
 		if (navigator.share) {
 			navigator
 				.share({
-					url: "https://if-repo.vercel.app/" + data.records[0].fields.slug
+					url: "https://if-repo.vercel.app/" + authors.records[0].fields.slug
 				})
 				.then(() => {
 				})
 				.catch(() => {
 				});
 		} else {
-			navigator.clipboard.writeText("https://if-repo.vercel.app/" + data.records[0].fields.slug)
+			navigator.clipboard.writeText("https://if-repo.vercel.app/" + authors.records[0].fields.slug)
 			setClipboard(true)
 		}
 	};
-	if (error) return <div>	<Navbar />failed to load {error}			<Footer />
-	</div>
-	if (!data) return <div>	<Navbar />  <div class="flex py-12 flex-col">
+	if (!authors) return <div>	<Navbar />  <div class="flex py-12 flex-col">
 		<div class="flex flex-col">
 			<div class="bg-white w-1/2 mx-auto p-2 sm:p-4 sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none ">
 				<div class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-200 animate-pulse">
@@ -93,14 +120,13 @@ const Owner = ({ authors, products, projects }) => {
 	</div>
 
 
-	if (error) return <div>	<Navbar />failed to load {error}			<Footer />
-	</div>
-	if (!data) return <div>	<Navbar />  <div class="flex py-12 flex-col"></div></div>
-	let meta_desc = data.records[0].fields.name+"  @("+data.records[0].fields.slug+") - Indians Who Freelance"
+
+	if (!authors) return <div>	<Navbar />  <div class="flex py-12 flex-col"></div></div>
+	let meta_desc = authors.records[0].fields.name + "  @(" + authors.records[0].fields.slug + ") - Indians Who Freelance"
 	return (<>
-		{/* <Head title={data.records[0].fields.name} keywords={data.records[0].fields.keywords} img={data.records[0].fields.thumbnailUrl[0].thumbnails.large.url}/> */}
+		{/* <Head title={authors.records[0].fields.name} keywords={authors.records[0].fields.keywords} img={authors.records[0].fields.thumbnailUrl[0].thumbnails.large.url}/> */}
 		<Head>
-			<title> {data.records[0].fields.name} @({data.records[0].fields.slug}) - Indians Who Freelance</title>
+			<title> {authors.records[0].fields.name} @({authors.records[0].fields.slug}) - Indians Who Freelance</title>
 			<meta name="description" content={meta_desc} />
 			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
 			<meta property="og:title" content={meta_desc} />
@@ -112,20 +138,29 @@ const Owner = ({ authors, products, projects }) => {
 
 		</Head>
 		<Navbar />
-		<div class="flex py-12 flex-col">
+		<div class="flex py-6 flex-col">
 			<div class="flex flex-col">
 				<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 ">
-					<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center mx-auto sm:py-5">
+					<div class=" py-2 flex flex-col justify-center mx-auto sm:py-5">
 						<div class="">
-							<div class="h-auto py-20 px-10 bg-indigo-500 flex flex-col space-y-5 mx-auto rounded-3xl  ease-in-out delay-150 hover:translate-y-1 hover:scale-110  transition-transform">
-								<div class="w-full md:w-2/5 h-50">
-									<img class="object-center object-cover w-full h-full" src={data.records[0].fields.photoUrl[0].thumbnails.large.url}
-										alt={data.records[0].fields.name} />
-								</div>
-								<h1 class=" font-medium text-white text-3xl tracking-wide">{data.records[0].fields.name}</h1>
-								<h1 class=" font-medium text-white text-md tracking-wide">{data.records[0].fields.location}</h1>
+							<div class="h-auto py-20 px-10 bg-indigo-500 flex flex-col space-y-5 mx-auto rounded-3xl">
+								
+								<div class="flex items-center space-x-4">
+    <img  src={authors.records[0].fields.photoUrl[0].thumbnails.large.url}
+										alt={authors.records[0].fields.name} width="88" height="88" class="rounded-full  flex-none  bg-gray-100" />
+    <div class="min-w-0 flex-auto space-y-1 font-semibold">
+      <h2 class="text-white text-2xl leading-6 truncate">
+	  {authors.records[0].fields.name}      </h2>
+      <p class="text-white text-sm">
+      {authors.records[0].fields.location}
+      </p>
+    </div>
+	
+  </div>
+  <h2 class="font-normal tracking-wide text-md text-white lg:w-2/5">Connect me for <br/> {authors.records[0].fields.skills}</h2>
 
-								<h2 class="font-normal tracking-wide text-xl text-white lg:w-2/5">{data.records[0].fields.about}</h2>
+
+								<h2 class="font-normal tracking-wide text-xl text-white lg:w-2/5">{authors.records[0].fields.about}</h2>
 								<div class="flex flex-col">
 									<div class="flex justify-start space-x-2">
 										<a href="#" class="text-white hover:text-blue-300">
@@ -149,47 +184,44 @@ const Owner = ({ authors, products, projects }) => {
 											</svg>
 										</a>
 									</div>
-									
+
 									<h1 onClick={handleShareButton} class="py-4 font-medium text-white text-md tracking-wide">Share my profile</h1>
 
 								</div>
 								{shareVar ? (
-															<>
-																<div
-																	className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-																>
-																	<div className="relative w-auto my-6 mx-auto max-w-sm">
-																		{/*content*/}
-																		<div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-																			{/*header*/}
-																			<div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-																				Thanks for choosing Indians Who Freelance.
-																			</div>
-																			{/*body*/}
+									<>
+										<div
+											className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+										>
+											<div className="relative w-auto my-6 mx-auto max-w-sm">
+												<div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+													<div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+														Thanks for choosing Indians Who Freelance.
+													</div>
 
-																			<div class="shadow-lg rounded-2xl p-4 bg-white w-64 m-auto">
-																				<div class="w-full h-full text-center">
-																					<div class="flex h-full flex-col justify-between">
+													<div class="shadow-lg rounded-2xl p-4 bg-white w-64 m-auto">
+														<div class="w-full h-full text-center">
+															<div class="flex h-full flex-col justify-between">
 
-																						<p class="text-gray-600 text-md py-2 px-6">
-																							Sharable link copied.
-																						</p>
-																						<div class="flex items-center justify-between gap-4 w-full mt-8">
-																							<button onClick={() => setClipboard(false)}
-																								type="button" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-																								Hurray
-																							</button>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-
-																		</div>
-																	</div>
+																<p class="text-gray-600 text-md py-2 px-6">
+																	Sharable link copied.
+																</p>
+																<div class="flex items-center justify-between gap-4 w-full mt-8">
+																	<button onClick={() => setClipboard(false)}
+																		type="button" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+																		Hurray
+																	</button>
 																</div>
-																<div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-															</>
-														) : null}
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+									</>
+								) : null}
 							</div>
 						</div>
 					</div>
@@ -260,5 +292,22 @@ const Owner = ({ authors, products, projects }) => {
 
 // 	return { paths, fallback: false }
 // }
+
+export async function getServerSideProps(context) {
+
+	const res = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/join_req?filterByFormula=AND({status}='live',{slug}='" + context.params.profile + "')", {
+		method: 'get',
+		headers: new Headers({
+			'Authorization': airtableAuth.token
+		}),
+	})
+	const resp = await res.json()
+	return {
+		props: {
+			authors: resp,
+
+		}, // will be passed to the page component as props
+	}
+}
 
 export default Owner
