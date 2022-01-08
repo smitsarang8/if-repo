@@ -49,6 +49,7 @@ const SignUp = () => {
 							status:"pending",
 							slug: "sm sara".toLowerCase().replace(/\s/g, ""),
 							slugUrl: "/" + "sm sara".toLowerCase().replace(/\s/g, ""),
+							keywords:"1,2,3"
 						}
 					}
 				]

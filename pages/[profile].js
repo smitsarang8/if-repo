@@ -4,7 +4,7 @@ import axios from 'axios'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/router'
 import { useEffect, useState, useRef } from 'react';
-import Head from "next/head"
+import Head from "../components/CreatorHead"
 import Footer from '../components/Footer';
 import airtableAuth from '../airtableAuth'
 const Owner = ({ authors, products, projects }) => {
@@ -42,28 +42,28 @@ const Owner = ({ authors, products, projects }) => {
 		};
 
 	})
-const skills = () => {
+	const skills = () => {
 		const infosArray = authors.records[0].fields.skills.split(",")
 		if (infosArray) {
 			var listItems = []
 			listItems = infosArray.map((skill) => {
 				if (skill) {
 					return <div class="flex justify-start space-x-2">
-										<p class="text-white hover:text-blue-300">
-										q
-										</p>
-									
+						<p class="text-white hover:text-blue-300">
+							q
+						</p>
 
 
-								</div>
-					// return <span class="px-4 py-2 flex items-center text-base rounded-full text-blue-600  bg-blue-200 ">
-					// 	<svg width="20" fill="currentColor" height="20" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-					// 		<path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z">
-					// 		</path>
-					// 	</svg>
-					// 	{skill}
-					// </span>
-					;
+
+					</div>
+						// return <span class="px-4 py-2 flex items-center text-base rounded-full text-blue-600  bg-blue-200 ">
+						// 	<svg width="20" fill="currentColor" height="20" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+						// 		<path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z">
+						// 		</path>
+						// 	</svg>
+						// 	{skill}
+						// </span>
+						;
 				}
 			})
 		}
@@ -124,8 +124,8 @@ const skills = () => {
 	if (!authors) return <div>	<Navbar />  <div class="flex py-12 flex-col"></div></div>
 	let meta_desc = authors.records[0].fields.name + "  @(" + authors.records[0].fields.slug + ") - Indians Who Freelance"
 	return (<>
-		{/* <Head title={authors.records[0].fields.name} keywords={authors.records[0].fields.keywords} img={authors.records[0].fields.thumbnailUrl[0].thumbnails.large.url}/> */}
-		<Head>
+		<Head title={authors.records[0].fields.name}  location={authors.records[0].fields.location} slug={authors.records[0].fields.slug} keywords={authors.records[0].fields.keywords} img={authors.records[0].fields.photoUrl[0].thumbnails.large.url} />
+		{/* <Head>
 			<title> {authors.records[0].fields.name} @({authors.records[0].fields.slug}) - Indians Who Freelance</title>
 			<meta name="description" content={meta_desc} />
 			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
@@ -136,7 +136,7 @@ const skills = () => {
 			<meta property="og:site_name" content="Indians Who Freelance" />
 			<meta property="og:type" content="website" />
 
-		</Head>
+		</Head> */}
 		<Navbar />
 		<div class="flex py-6 flex-col">
 			<div class="flex flex-col">
@@ -144,20 +144,20 @@ const skills = () => {
 					<div class=" py-2 flex flex-col justify-center mx-auto sm:py-5">
 						<div class="">
 							<div class="h-auto py-20 px-10 bg-indigo-500 flex flex-col space-y-5 mx-auto rounded-3xl">
-								
+
 								<div class="flex items-center space-x-4">
-    <img  src={authors.records[0].fields.photoUrl[0].thumbnails.large.url}
+									<img src={authors.records[0].fields.photoUrl[0].thumbnails.large.url}
 										alt={authors.records[0].fields.name} width="88" height="88" class="rounded-full  flex-none  bg-gray-100" />
-    <div class="min-w-0 flex-auto space-y-1 font-semibold">
-      <h2 class="text-white text-2xl leading-6 truncate">
-	  {authors.records[0].fields.name}      </h2>
-      <p class="text-white text-sm">
-      {authors.records[0].fields.location}
-      </p>
-    </div>
-	
-  </div>
-  <h2 class="font-normal tracking-wide text-md text-white lg:w-2/5">Connect me for <br/> {authors.records[0].fields.skills}</h2>
+									<div class="min-w-0 flex-auto space-y-1 font-semibold">
+										<h2 class="text-white text-2xl leading-6 truncate">
+											{authors.records[0].fields.name}      </h2>
+										<p class="text-white text-sm">
+											{authors.records[0].fields.location}
+										</p>
+									</div>
+
+								</div>
+								<h2 class="font-normal tracking-wide text-md text-white lg:w-2/5">Connect me for <br /> {authors.records[0].fields.skills}</h2>
 
 
 								<h2 class="font-normal tracking-wide text-xl text-white lg:w-2/5">{authors.records[0].fields.about}</h2>
