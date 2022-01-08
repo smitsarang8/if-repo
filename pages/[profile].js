@@ -48,14 +48,14 @@ const Owner = ({ authors, products, projects }) => {
 		if (navigator.share) {
 			navigator
 				.share({
-					url: "https://rdtesting.netlify.app/" + data.records[0].fields.slug
+					url: "https://if-repo.vercel.app/" + data.records[0].fields.slug
 				})
 				.then(() => {
 				})
 				.catch(() => {
 				});
 		} else {
-			navigator.clipboard.writeText("https://rdtesting.netlify.app/" + data.records[0].fields.slug)
+			navigator.clipboard.writeText("https://if-repo.vercel.app/" + data.records[0].fields.slug)
 			setClipboard(true)
 		}
 	};
@@ -96,16 +96,16 @@ const Owner = ({ authors, products, projects }) => {
 	if (error) return <div>	<Navbar />failed to load {error}			<Footer />
 	</div>
 	if (!data) return <div>	<Navbar />  <div class="flex py-12 flex-col"></div></div>
-
+	let meta_desc = data.records[0].fields.name+"  @("+data.records[0].fields.slug+") - Indians Who Freelance"
 	return (<>
 		{/* <Head title={data.records[0].fields.name} keywords={data.records[0].fields.keywords} img={data.records[0].fields.thumbnailUrl[0].thumbnails.large.url}/> */}
 		<Head>
 			<title> {data.records[0].fields.name} @({data.records[0].fields.slug}) - Indians Who Freelance</title>
-			<meta name="description" content={data.records[0].fields.name} />
+			<meta name="description" content={meta_desc} />
 			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
-			<meta property="og:title" content={data.records[0].fields.name} />
-			<meta property="og:description" content="Visit this profile on Indians Who Freelance. India's shop listing platform which enables users to explore shops easily and efficiently. Explore commercial shops now." />
-			<meta property="og:url" content="https://rdtesting.netlify.app/" />
+			<meta property="og:title" content={meta_desc} />
+			<meta property="og:description" content="Visit this profile on Indians Who Freelance." />
+			<meta property="og:url" content="https://if-repo.vercel.app/" />
 			<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
 			<meta property="og:site_name" content="Indians Who Freelance" />
 			<meta property="og:type" content="website" />

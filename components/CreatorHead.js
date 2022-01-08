@@ -14,7 +14,7 @@ function HeadTag({ title, keywords, img }) {
 			<meta name="og:description" property="og:description" content={metaDesc} />
 			<meta name="twitter:description" content={metaDesc} />
 
-			<meta property="og:url" content="https://rdtesting.netlify.app/" />
+			<meta property="og:url" content="https://if-repo.vercel.app/" />
 			<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91"/>
 			<meta name="twitter:image" content="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
 			<meta name="keywords" content={keywords} />
