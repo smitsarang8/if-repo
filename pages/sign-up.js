@@ -8,14 +8,14 @@ const SignUp = ({ children }) => {
 	const { pSlug } = router.query
 	return (
 		<><Head>
-			<title>Sign up- Real Dukaan</title>
+			<title>Sign up- Indians Who Freelance</title>
 			<meta name="description" content="Sign up" />
-			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
-			<meta property="og:title" content="Sign-Up - RealDukaan" />
-			<meta property="og:description" content="Real Dukaan is India's community-managed shop listing platform which enables users to explore shops easily and efficiently.Explore commercial shops now." />
+			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
+			<meta property="og:title" content="Sign-Up - Indians Who Freelance" />
+			<meta property="og:description" content="Indians Who Freelance is India's " />
 			<meta property="og:url" content="https://rdtesting.netlify.app/" />
-			<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
-			<meta property="og:site_name" content="Real Dukaan" />
+			<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
+			<meta property="og:site_name" content="Indians Who Freelance" />
 			<meta property="og:type" content="website" />
 
 		</Head>

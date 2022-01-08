@@ -3,129 +3,98 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/router'
 import Footer from '../components/Footer';
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth"
-import FavProductItem from '../components/FavProductItem'
 
 const About = ({ products }) => {
-	const email = null
-	let app = null;
-	const firebaseConfig = {
-		apiKey: 'AIzaSyBQ8VmCzHKwHjNd0NmtEOpAsvYwqayH0MU',
-		authDomain: 'ddetails-47db8.firebaseapp.com',
-		projectId: 'ddetails-47db8',
-		storageBucket: 'ddetails-47db8.appspot.com',
-		messagingSenderId: '231286919067',
-		appId: '1:231286919067:web:c0ba041779d3353bafdb3e'
-	  }
-	app = firebase.initializeApp(firebaseConfig);
-	firebase.auth().onAuthStateChanged(function (user) {
-		if (user) {
-		  email=user.email
-		}
-		else {
-		}
-	  })
-	
+
 	const router = useRouter()
 	return (
 		<><Head>
-			<title>About us - Real Dukaan</title>
+			<title>About us - Indians Who Freelance</title>
 			<meta name="description" content="About us" />
-			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
-			<meta property="og:title" content="About us - RealDukaan" />
-			<meta property="og:description" content="Real Dukaan is India's community-managed shop listing platform which enables users to explore shops easily and efficiently.Explore commercial shops now." />
+			<link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
+			<meta property="og:title" content="About us - Indians Who Freelance" />
+			<meta property="og:description" content="Indians Who Freelance is India's " />
 			<meta property="og:url" content="https://rdtesting.netlify.app/" />
-			<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/3fbe59fbd3d405d40173f878ff5187ca/9f0069ed" />
-			<meta property="og:site_name" content="Real Dukaan" />
+			<meta property="og:image" content="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
+			<meta property="og:site_name" content="Indians Who Freelance" />
 			<meta property="og:type" content="website" />
 
 		</Head>
 			<Navbar />
 			<div className="container mx-auto row">
-			<section
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 body-font overflow-hidden"
-    >
-      <div class="container px-5 py-24 mx-auto">
-        <div class="-my-8 divide-y-2 divide-gray-100">
-          <div class="py-8 flex flex-wrap md:flex-nowrap">
-            <div class="md:flex-grow">
-              <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">About Us</h2>
-              <p class="leading-relaxed">
-                At Real Dukaan, We are working seamlessly to create an enormous platform
-                that the world of real estate has never seen.<br />
-                Whether you are the one who is looking for shops to buy or rent out, or
-                you are owning a shop that you want to list.<br />We are actively working
-                on providing you the best experience.
-              </p>
-            </div>
-          </div>
+				<section
+					class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 body-font overflow-hidden"
+				>
+					<div class="container px-5 py-24 mx-auto">
+						<div class="-my-8 divide-y-2 divide-gray-100">
+							<div class="py-8 flex flex-wrap md:flex-nowrap">
+								<div class="md:flex-grow">
+									<h2 class="text-2xl font-medium text-gray-900 title-font mb-2">About Us</h2>
+									<p class="leading-relaxed">
+										At Indians Who Freelance.
+									</p>
+								</div>
+							</div>
 
-          <div class="py-8 flex flex-wrap md:flex-nowrap">
-            <div class="md:flex-grow">
-              <div class="bg-white  w-full mx-auto p-8">
-                <p
-                  class="text-gray-600  w-full md:w-2/3 m-auto text-center text-lg md:text-3xl"
-                >
-                  <span class="font-bold text-indigo-500"> “ </span>
-                  We are here to make it happen and allow you to explore shops, In an
-                  easier and efficient way.<span class="font-bold text-indigo-500">
-                    ”
-                  </span>
-                </p>
-                <div class="flex items-center justify-center mt-8">
-                  <span>&#128640;</span>
-                  <div class="flex ml-2 items-center justify-center">
-                    <span class="font-semibold text-indigo-500 mr-2 text-lg"> Team Real Dukaan</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+							<div class="py-8 flex flex-wrap md:flex-nowrap">
+								<div class="md:flex-grow">
+									<div class="bg-white  w-full mx-auto p-8">
+										<p
+											class="text-gray-600  w-full md:w-2/3 m-auto text-center text-lg md:text-3xl"
+										>
+											<span class="font-bold text-indigo-500"> “ </span>
+											We are here to make it happen.<span class="font-bold text-indigo-500">
+												”
+											</span>
+										</p>
+										<div class="flex items-center justify-center mt-8">
+											<span>&#128640;</span>
+											<div class="flex ml-2 items-center justify-center">
+												<span class="font-semibold text-indigo-500 mr-2 text-lg"> Team Indians Who Freelance</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<section class="bg-white dark:bg-gray-900">
+							<div class="container px-6 py-10 mx-auto">
+								<div class="xl:flex xl:items-center xL:-mx-4">
+									<div class="xl:w-1/2 xl:mx-4">
+										<h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Our Team</h1>
+
+										<p class="max-w-2xl mt-4 text-gray-500 dark:text-gray-300">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt ex placeat modi magni quia error alias, adipisci rem similique, at omnis eligendi optio eos harum.
+										</p>
+									</div>
+
+									<div class="grid grid-cols-1 gap-8 mt-8 xl:mt-0 xl:mx-4 xl:w-1/2 md:grid-cols-2">
+										<div>
+											<img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
+
+											<h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">John Doe</h1>
+
+											<p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Full stack developer</p>
+										</div>
+
+										<div>
+											<img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+
+											<h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Mia</h1>
+
+											<p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Graphic Designer</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</section>
 			</div>
 			<Footer />
 		</>
 	)
-}
-export const getStaticProps = async (context) => {
-	let app = null;
-	const email = null
-
-	const firebaseConfig = {
-		apiKey: 'AIzaSyBQ8VmCzHKwHjNd0NmtEOpAsvYwqayH0MU',
-		authDomain: 'ddetails-47db8.firebaseapp.com',
-		projectId: 'ddetails-47db8',
-		storageBucket: 'ddetails-47db8.appspot.com',
-		messagingSenderId: '231286919067',
-		appId: '1:231286919067:web:c0ba041779d3353bafdb3e'
-	  }
-	app = firebase.initializeApp(firebaseConfig);
-	const getEmail = () =>{
-		firebase.auth().onAuthStateChanged(function (user) {
-			if (user) {
-			  return user.email
-			}
-			else {
-			}
-		  })
-	
-	}
-
-	const ress = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/fav_prop?&filterByFormula=AND({status}='active',{email}='"+getEmail()+"')", {
-		method: 'get',
-		headers: new Headers({
-			'Authorization': 'Bearer keyLRae2Fru3dnFqr',
-		}),
-	})
-	const favprops = await ress.json()
-	return {
-		props: {
-			products: favprops,
-		},
-	}
 }
 
 

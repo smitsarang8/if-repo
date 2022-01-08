@@ -13,10 +13,9 @@ const Footer = () => {
 									<a
 										class="flex title-font font-medium items-center md:justify-start justify-center text-white"
 									>
-										<span class="text-xl">Real Dukaan</span>
+										<span class="text-xl">Indians Who Freelance</span>
 									</a>
-									<p class="mt-2 text-sm text-white">Explore dukaan near you</p>
-									<p class="mt-2 text-sm text-white">Made in Bharat</p>
+									<p class="mt-2 text-sm text-white">Freelancing made easy</p>
 								</div>
 								<div
 									class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center"
@@ -48,13 +47,8 @@ const Footer = () => {
 										</h2>
 										<nav class="list-none mb-10">
 											<li>
-												<a href="/sign-up" class="text-white hover:text-white text-sm"
-												>Register</a
-												>
-											</li>
-											<li>
-												<a href="/sign-in" class="text-white hover:text-white text-sm"
-												>Login</a
+												<a href="/join" class="text-white hover:text-white text-sm"
+												>Join Us</a
 												>
 											</li>
 										</nav>
@@ -80,7 +74,7 @@ const Footer = () => {
 										<nav class="list-none mb-10">
 											<li>
 												<a
-													href="https://www.facebook.com/realdukaan"
+													href="https://www.facebook.com/Indians Who Freelance"
 													target="_blank"
 													class="text-white hover:text-white text-sm"
 												>Facebook</a
@@ -96,7 +90,7 @@ const Footer = () => {
 											</li>
 											<li>
 												<a
-													href="https://www.instagram.com/realdukaan"
+													href="https://www.instagram.com/Indians Who Freelance"
 													target="_blank"
 													class="text-white hover:text-white text-sm"
 												>Instagram</a

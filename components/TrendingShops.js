@@ -7,7 +7,7 @@ const TrendingShops = ({ products }) => {
 
         <div className="row">
 
-            <div class="max-w-2xl mx-auto py-12 sm:py-12 lg:py-12 lg:max-w-none">
+            <div class="px-6 max-w-2xl mx-auto py-2 sm:py-2 lg:py2 lg:max-w-none">
                 <div class="lg:w-1/2 w-full py-6 lg:mb-0">
                     <h1 class="px-4 sm:text-3xl text-2xl sm-title text-gray-900">
                         Trending shops
