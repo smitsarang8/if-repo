@@ -21,15 +21,15 @@ const TandC = ({ products }) => {
 
 		</Head>
 			<Navbar />
-			<div className="container mx-auto row">
+			<div className="bg-black  row">
 			<section
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 body-font overflow-hidden"
+      class="container mx-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 body-font overflow-hidden"
     >
       <div class="container px-5 py-24 mx-auto">
         <div class="-my-8 divide-y-2 divide-gray-100">
           <div class="py-8 flex flex-wrap md:flex-nowrap">
             <div class="md:flex-grow">
-              <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+              <h2 class="text-2xl font-medium text-white title-font mb-2">
                 Terms and Conditions
               </h2>
               
@@ -41,7 +41,7 @@ const TandC = ({ products }) => {
           
         </div>
       </div>
-    </section>``
+    </section>
 			</div>
 			<Footer />
 		</>

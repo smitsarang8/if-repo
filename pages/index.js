@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import TrendingShopsComp from "../components/TrendingShopsComp";
+import airtableAuth from '../airtableAuth'
 
 import LandingArea from '../components/LandingArea';
 import Router from 'next/router'
@@ -10,7 +11,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth"
 import { useCookies } from "react-cookie"
 import TrendingShops from '../components/TrendingShops';
-
+import FooterCTA from '../components/FooterCTA';
 export default function Home(products) {
 
   return (
@@ -35,21 +36,14 @@ export default function Home(products) {
         <LandingArea />
 
       </span>
-      <main className="container mx-auto">
+      <main >
 
-        <div>
-          <div className="row">
-
-            <div class="max-w-2xl mx-auto py-12 sm:py-12 lg:py-12 lg:max-w-none">
-            {/* <TrendingShopsComp /> */}
-            </div>
-          </div>
-
-        </div>
-        {/* <TrendingShops products={products.products.records} /> */}
-
+            <TrendingShops products={products.products.records} />
+        
+        
         {/* <ShopInArcade products={products.shopinarcade.records} /> */}
 
+       <FooterCTA/>
       </main>
 
       <Footer />
@@ -57,24 +51,16 @@ export default function Home(products) {
   )
 }
 export const getStaticProps = async () => {
-  const res = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?maxRecords=15&filterByFormula=AND({status}='approved',{propertyType}='shop',{isTrending}='yes')", {
+  const res = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/join_req?maxRecords=50&filterByFormula=AND({status}='live')", {
     method: 'get',
     headers: new Headers({
-      'Authorization': 'Bearer keyLRae2Fru3dnFqr',
+			'Authorization': airtableAuth.token
     }),
   })
   const products = await res.json()
-  const ress = await fetch("https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?maxRecords=15&filterByFormula=AND({status}='approved',{propertyType}='shop',{propertySubType}='Shop in arcade')", {
-    method: 'get',
-    headers: new Headers({
-      'Authorization': 'Bearer keyLRae2Fru3dnFqr',
-    }),
-  })
-  const shopinarcade = await ress.json()
+  
   return {
     props: {
-      products,
-      shopinarcade
-    },
+      products    },
   }
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import useSWR from "swr";
 import airtableAuth from "../airtableAuth";
-import ProductItem from "./ProductItem";
+import ProductItem from "./UserCard";
 export default function Users({ count, setCount }) {
   const address = `https://api.airtable.com/v0/appgsdBi4Ssk6GHRs/listing_requests?maxRecords=15&filterByFormula=AND({status}='approved',{propertyType}='shop',{isTrending}='yes')`;
   const fetcher = async (url) => await axios.get(url, {

@@ -10,7 +10,7 @@ const Navbar = () => {
 				<div class="container mx-auto flex flex-wrap items-center justify-between">
 					<a href="/" class="flex">
 						{/* <h2 class="font-bold text-black text-4xl">If.</h2> */}
-						<img src='https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91' class="h-14 mr-3" viewBox="0 0 52 72" />
+						<img src='https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91' class="h-14 mr-6" viewBox="0 0 52 72" />
 					</a>
 					<a href="/" class="flex">
 						<style jsx>{`
