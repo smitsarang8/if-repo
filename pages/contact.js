@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/router'
 import Footer from '../components/Footer';
+import LandingArea from '../components/LandingArea';
 
 const Contact = ({ products }) => {
 
@@ -20,11 +21,12 @@ const Contact = ({ products }) => {
 
 		</Head>
 			<Navbar />
+      <LandingArea/>
 			<div className="bg-black row">
 			<section
       class="container mx-auto  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 body-font overflow-hidden"
     >
-      <div class="container px-5 py-24 mx-auto">
+      <div class="container px-5 py-6 mx-auto">
         <div class="-my-8 divide-y-2 divide-gray-100">
           <div class="py-8 flex flex-wrap md:flex-nowrap">
             <div class="md:flex-grow">
@@ -33,23 +35,19 @@ const Contact = ({ products }) => {
               </h2>
               <p class="text-white leading-relaxed">
                 To enable the use of technology at its fullest. We are completely remote
-                company. You can always reach to us via email / call.
+                company. You can always reach to us via email / socials.
               </p>
+              <p class="py-6 text-white leading-relaxed">
+               Email : <br/>
+               Twitter : <br/>
+               Instagram :
+
+              </p>
+
             </div>
           </div>
 
-          <div class="py-8 flex flex-wrap md:flex-nowrap">
-            <div class="md:flex-grow">
-              <h2 class="text-2xl font-medium text-white title-font mb-2">
-                Reach us on
-              </h2>
-              <p class="text-white leading-relaxed">
-                Email : <a href="mailto:" > x </a>
-              </p>
-            
-            </div>
-          </div>
-
+        
           
         </div>
       </div>

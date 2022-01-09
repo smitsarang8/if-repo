@@ -83,13 +83,13 @@ const SignUp = () => {
 		</Head>
 			<Navbar />
 			
-					<div class="container mx-auto min-h-full flex items-left justify-left py-12 px-4 sm:px-6 lg:px-8">
-						<div class="max-w-md w-full space-y-8">
+					<div class=" bg-black min-h-full flex items-left justify-left py-12 px-4 sm:px-6 lg:px-8">
+						<div class="container mx-auto ">
 							<div>
-								<h2 class="mt-6 text-left text-3xl font-extrabold text-gray-900">
+								<h2 class="mt-6 text-left text-3xl font-extrabold text-white">
 									Join us
 								</h2>
-								<p class="mt-2 text-left text-sm text-gray-600">
+								<p class="mt-2 text-left text-sm text-white">
 									Let's grow together.
 								</p>
 							</div>

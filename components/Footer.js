@@ -17,54 +17,10 @@ const Footer = () => {
 									</a>
 									<p class="mt-2 text-sm text-white"> Directory of India's best freelancers. Connecting freelancers made easy.</p>
 								</div>
+								
 								<div
 									class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center"
 								>
-									<div class="lg:w-1/4 md:w-1/2 w-full px-4">
-										<h1
-											class="title-font font-medium text-white tracking-widest text-md mb-3"
-										>
-											Company
-										</h1>
-										<nav class="list-none mb-10">
-											<li>
-												<a href="/about" class="text-white hover:text-white text-sm"
-												>About us</a
-												>
-											</li>
-											<li>
-												<a href="/contact" class="text-white hover:text-white text-sm"
-												>Contact us</a
-												>
-											</li>
-										</nav>
-									</div>
-									<div class="lg:w-1/4 md:w-1/2 w-full px-4">
-										<h2
-											class="title-font font-medium text-white tracking-widest text-md mb-3"
-										>
-											Resources
-										</h2>
-										<nav class="list-none mb-10">
-											<li>
-												<a href="/join" class="text-white hover:text-white text-sm"
-												>Join Us</a
-												>
-											</li>
-										</nav>
-									</div>
-									<div class="lg:w-1/4 md:w-1/2 w-full px-4">
-										<h2
-											class="title-font font-medium text-white tracking-widest text-md mb-3"
-										>
-											Legal
-										</h2>
-										<nav class="list-none mb-10">
-											<li>
-												<a href="/legal/terms-and-conditions" class="text-white hover:text-white text-sm">Terms & Conditions</a>
-											</li>
-										</nav>
-									</div>
 									<div class="lg:w-1/4 md:w-1/2 w-full px-4">
 										<h2
 											class="title-font font-medium text-white tracking-widest text-md mb-3"
@@ -94,6 +50,54 @@ const Footer = () => {
 													target="_blank"
 													class="text-white hover:text-white text-sm"
 												>Instagram</a
+												>
+											</li>
+										</nav>
+										
+									</div>
+									<div class="lg:w-1/4 md:w-1/2 w-full px-4">
+										<h1
+											class="title-font font-medium text-white tracking-widest text-md mb-3"
+										>
+											Company
+										</h1>
+										<nav class="list-none mb-10">
+											<li>
+												<a href="/about" class="text-white hover:text-white text-sm"
+												>About us</a
+												>
+											</li>
+											<li>
+												<a href="/contact" class="text-white hover:text-white text-sm"
+												>Contact us</a
+												>
+											</li>
+										</nav>
+									</div>
+									
+									<div class="lg:w-1/4 md:w-1/2 w-full px-4">
+										<h2
+											class="title-font font-medium text-white tracking-widest text-md mb-3"
+										>
+											Legal
+										</h2>
+										<nav class="list-none mb-10">
+											<li>
+												<a href="/legal/terms-and-conditions" class="text-white hover:text-white text-sm">Terms & Conditions</a>
+											</li>
+										</nav>
+									</div>
+									
+									<div class="lg:w-1/4 md:w-1/2 w-full px-4">
+										<h2
+											class="title-font font-medium text-white tracking-widest text-md mb-3"
+										>
+											Resources
+										</h2>
+										<nav class="list-none mb-10">
+											<li>
+												<a href="/join" class="text-white hover:text-white text-sm"
+												>Join </a
 												>
 											</li>
 										</nav>

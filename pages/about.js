@@ -36,30 +36,9 @@ const About = ({ products }) => {
 								</div>
 							</div>
 
-							<div class="py-8 flex flex-wrap md:flex-nowrap">
-								<div class="md:flex-grow">
-									<div class="bg-black  w-full mx-auto p-8">
-										<p
-											class="text-white  w-full md:w-2/3 m-auto text-center text-lg md:text-3xl"
-										>
-											<span class="font-bold text-white"> “ </span>
-											We are here to make it happen.<span class="font-bold text-white">
-												”
-											</span>
-										</p>
-										<div class="flex items-center justify-center mt-8">
-											<span>&#128640;</span>
-											<div class="flex ml-2 items-center justify-center">
-												<span class="font-semibold text-gray-300   mr-2 text-lg"> Team Indians Who Freelance</span>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</div>
 						</div>
 						<section class="bg-black">
-							<div class="container px-6 py-10 mx-auto">
+							<div class="container py-10 mx-auto">
 								<div class="xl:flex xl:items-center xL:-mx-4">
 									<div class="xl:w-1/2 xl:mx-4">
 										<h1 class="text-3xl font-semibold text-white capitalize lg:text-4xl">Our Team</h1>

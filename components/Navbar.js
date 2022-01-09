@@ -6,13 +6,13 @@ const Navbar = () => {
 
 	return (
 		<span>
-			<nav class="bg-black border-white px-2 sm:px-4 py-2.5 ">
+			<nav class="bg-black border-white px-1 sm:px-4 py-2.5 ">
 				<div class="container mx-auto flex flex-wrap items-center justify-between">
 					<a href="/" class="flex">
 						{/* <h2 class="font-bold text-black text-4xl">If.</h2> */}
 						<img src='https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91' class="h-14 mr-6" viewBox="0 0 52 72" />
 					</a>
-					<a href="/" class="flex">
+					<a href="/" class="hidden flex">
 						<style jsx>{`
 						
 						  .typing-demo {
@@ -20,7 +20,6 @@ const Navbar = () => {
 							animation: typing 2s steps(22), blink .5s step-end infinite alternate;
 							white-space: nowrap;
 							overflow: hidden;
-							border-right: 3px solid transparent;
 							font-family: 'Poppins', sans-serif;
 							font-size: 1em;
 							color:white
@@ -48,11 +47,11 @@ const Navbar = () => {
 				
 					<button data-collapse-toggle="mobile-menu" type="button" class="md:hidden ml-3 text-gray-500 focus:outline-none focus:ring-none focus:ring-gray-200 rounded-lg text-sm p-2 inline-flex items-center" aria-controls="mobile-menu-2" aria-expanded="false">
 						<a href="/join"
-							class=" font-md py-2 px-4 text-black w-full transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-none focus:ring-offset-2 rounded-lg"
+							class=" font-md px-4 text-black w-full transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-none focus:ring-offset-2 rounded-lg"
 						>
 							
 							<span class="text-white"
-							>Join Us
+							>Join
 							
 							</span>
 						</a>
@@ -70,7 +69,7 @@ const Navbar = () => {
 
 											<span class="pt-2 py-2 text-sm">
 												<span class="text-white"
-												>Join Us
+												>Join
 												
 												</span></span>
 										</a>

@@ -28,7 +28,7 @@ export default function Home(products) {
 
         <meta property="apple-mobile-web-app-title" content="Indians Who Freelance" />
 
-        <link rel="icon" href="/icon.png" />
+        <link rel="icon" href="https://dl.airtable.com/.attachmentThumbnails/7de6d2eac1a6b4ad469100d497acbb77/f570db91" />
 
       </Head>
       <span>
